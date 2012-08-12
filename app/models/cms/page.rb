@@ -55,13 +55,8 @@ class Cms::Page < ActiveRecord::Base
   validate :validate_target_page
   validate :format_of_unescaped_slug
 
-  def self.validate_length_of_column column_name
-    column = self.columns.find {|c| column_name.to_s == c.name.to_s }
-    validates column_name,
-      :length => {:maximum => column.limit}
-  end
-  validate_length_of_column :slug
-  validate_length_of_column :full_path
+  validate :slug, :length => { :maximum => 765 }
+  validate :full_path, :length => { :maximum => 765 }
 
   def format_of_unescaped_slug
     return unless slug.present?
