@@ -70,9 +70,9 @@ class Cms::Page < ActiveRecord::Base
     :column_limit => true
 
   # -- Scopes ---------------------------------------------------------------
-  default_scope order('cms_pages.position')
-  scope :published, where(:is_published => true)
-  
+  default_scope -> { order('cms_pages.position') }
+  scope :published, -> { where(:is_published => true) }
+
   # -- Class Methods --------------------------------------------------------
   # Tree-like structure for pages
   def self.options_for_select(site, page = nil, current_page = nil, depth = 0, exclude_self = true, spacer = '. . ')

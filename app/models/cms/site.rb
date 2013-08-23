@@ -40,8 +40,8 @@ class Cms::Site < ActiveRecord::Base
     :format     => { :with => /^[\w\.\-]+(?:\:\d+)?$/ }
     
   # -- Scopes ---------------------------------------------------------------
-  scope :mirrored, where(:is_mirrored => true)
-  
+  scope :mirrored, -> { where(:is_mirrored => true) }
+
   # -- Class Methods --------------------------------------------------------
   # returning the Cms::Site instance based on host and path
   def self.find_site(host, path = nil)

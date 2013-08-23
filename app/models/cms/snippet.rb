@@ -33,8 +33,8 @@ class Cms::Snippet < ActiveRecord::Base
     :format     => { :with => /^\w[a-z0-9_-]*$/i }
     
   # -- Scopes ---------------------------------------------------------------
-  default_scope order('cms_snippets.position')
-  
+  default_scope -> { order('cms_snippets.position') }
+
 protected
   
   def assign_label
