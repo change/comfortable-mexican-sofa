@@ -12,3 +12,4 @@ public/*
 Gemfile.lock
 .rvmrc
 /coverage
+*.pem
